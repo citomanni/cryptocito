@@ -281,6 +281,22 @@ main {
   background-color: #4c319d;
   transform: translateY(-0.1rem);
 }
+#toast-container {
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(
+    181,
+    179,
+    179,
+    0.8
+  ); /* Whitish grey with 80% opacity */
+  color: green;
+  padding: 15px;
+  border-radius: 50px;
+  display: none;
+}
 .main__section--1 .main--btn-bookmark {
   width: 17.4rem;
   padding-right: 2rem;

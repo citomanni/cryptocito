@@ -253,11 +253,27 @@
                   </div>
                 </li>
 
-                <li class="menu-item">
-                  <a href="#customer-reps" class="menu-link">
+                <li class="menu-item chat-button">
+                  <a href="#" class="menu-link">
                     <span><i class="bi bi-chat-fill"></i> Support</span>
                   </a>
                 </li>
+                <script>
+                  (function() {
+                    function onTidioChatApiReady() {
+                      window.tidioChatApi.hide();
+                    }
+                    
+                    if (window.tidioChatApi) {
+                      window.tidioChatApi.on("ready", onTidioChatApiReady);
+                    }
+                    
+                    document.querySelector(".chat-button").addEventListener("click", function() {
+                      window.tidioChatApi.show();
+                      window.tidioChatApi.open();
+                    });
+                  })();
+                </script>
               </ul>
             </div>
           </nav>

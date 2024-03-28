@@ -1,7 +1,7 @@
 const hamburger = document.querySelector(".hamburger");
 const navSection = document.querySelector(".navbar__items");
 
-const btn1 = document.querySelector(".main--btn-one");
+// const btn1 = document.querySelector(".main--btn-one");
 const btn2 = document.querySelector(".close-btn");
 const overlay = document.querySelector(".overlay__modal");
 const cardBtns = document.querySelectorAll(".card--btn");
@@ -28,9 +28,9 @@ for (let i = 0; i < cardBtns.length; i++) {
   });
 }
 
-btn1.addEventListener("click", () => {
-  overlay.classList.toggle("overlay__inactive");
-});
+// btn1.addEventListener("click", () => {
+//   overlay.classList.toggle("overlay__inactive");
+// });
 
 btn2.addEventListener("click", () => {
   overlay.classList.toggle("overlay__inactive");

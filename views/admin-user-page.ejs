@@ -248,12 +248,6 @@
                       </div>
                     </div>
                   </div>
-                  <input
-                    type="hidden"
-                    id="data-user-id"
-                    name="data-user-id"
-                    value="user-id-value"
-                  />
                 </form>
               </div>
               <div
@@ -265,7 +259,9 @@
                 "
               >
                 <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary update-user-btn"
+                  <a
+                    href="#!"
+                    class="btn btn-sm btn-primary update-user-addr-btn"
                     >Save</a
                   >
                 </div>
@@ -570,7 +566,6 @@
 
           // Log the created object
           console.log(formData);
-
           // Send a PUT request to the /user/:id route
           fetch(`/4837jshjfh94y89q293fdkjhf-a73a4d5e2/users/${userId}`, {
             method: "PUT",
@@ -593,7 +588,5 @@
         });
       });
     </script>
-
-    <!-- Your HTML content below this line -->
   </body>
 </html>
