@@ -53,7 +53,7 @@ const userSchema = new Schema(
     },
     tradeStatus: {
       type: String,
-      default: "Not Started",
+      default: "pending",
     },
     username: {
       type: String,

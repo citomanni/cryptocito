@@ -314,21 +314,7 @@ main {
   display: none;
   z-index: 50;
 }
-/* .copy-button {
-  padding: 5px 10px;
-  background-color: #fff;
-  color: #3c5df1;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  outline: none;
-  font-weight: 600;
-}
 
-.copy-button:hover {
-  color: #0056b3;
-} */
 .copy-button {
   padding: 2px 7px;
   margin-left: 5px;
@@ -1000,7 +986,6 @@ main {
   background-color: rgba(122, 122, 122, 0.3);
 }
 .main__section--2 .line--fill {
-  width: 75%;
   height: 1rem;
   border-radius: 0.5rem;
   background-color: #5f3dc4;

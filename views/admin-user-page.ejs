@@ -183,7 +183,7 @@
                   <hr class="my-4" />
                   <div style="text-align: left">
                     <p>Trade plan — <b><%= data.user.plan %></b></p>
-                    <p>Trade status — <b><%= data.user.tradeStatus %></b></p>
+                    <p>Trade status — <b><%= data.user.tradeStatus.charAt(0).toUpperCase() + data.user.tradeStatus.slice(1) %></b></p>
                   </div>
                 </div>
               </div>
@@ -394,6 +394,16 @@
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group focused">
+                          <label class="form-control-label" for="input-status">Status</label>
+                          <select id="input-status" class="form-control form-control-alternative">
+                            <option value="pending" <% if (data.user.tradeStatus === "pending") { %> selected <% } %>>Pending</option>
+                            <option value="paused" <% if (data.user.tradeStatus === "paused") { %> selected <% } %>>Paused</option>
+                            <option value="active" <% if (data.user.tradeStatus === "active") { %> selected <% } %>>Active</option>
+                            <option value="completed" <% if (data.user.tradeStatus === "completed") { %> selected <% } %>>Completed</option>
+                          </select>
+                        </div>
+                        
+                        <!-- <div class="form-group focused">
                           <label class="form-control-label" for="input-status"
                             >Status</label
                           >
@@ -404,7 +414,7 @@
                             placeholder="status"
                             value="<%= data.user.tradeStatus %>"
                           />
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>

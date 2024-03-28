@@ -186,7 +186,13 @@
                   <hr class="my-4" />
                   <div style="text-align: left">
                     <p>Trade plan — <b><%= data.user.plan %></b></p>
-                    <p>Trade status — <b><%= data.user.tradeStatus %></b></p>
+                    <p>
+                      Trade status —
+                      <b
+                        ><%= data.user.tradeStatus.charAt(0).toUpperCase() +
+                        data.user.tradeStatus.slice(1) %></b
+                      >
+                    </p>
                   </div>
                   <a href="#" onclick="goBack()">Dashboard</a>
                 </div>
@@ -198,7 +204,7 @@
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h3 class="mb-0">Live Chart</h3>
+                    <h3 class="mb-0">BTC-USD</h3>
                   </div>
                 </div>
               </div>
