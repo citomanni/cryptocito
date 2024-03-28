@@ -297,6 +297,70 @@ main {
   border-radius: 50px;
   display: none;
 }
+.copy-toast-container {
+  position: fixed;
+  bottom: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(
+    181,
+    179,
+    179,
+    0.8
+  ); /* Whitish grey with 80% opacity */
+  color: green;
+  padding: 10px;
+  border-radius: 30px;
+  display: none;
+  z-index: 50;
+}
+/* .copy-button {
+  padding: 5px 10px;
+  background-color: #fff;
+  color: #3c5df1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  outline: none;
+  font-weight: 600;
+}
+
+.copy-button:hover {
+  color: #0056b3;
+} */
+.copy-button {
+  padding: 2px 7px;
+  margin-left: 5px;
+  background-color: #fffcfc; /* Light gray background */
+  color: #3c5df1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  outline: none;
+  font-weight: 600;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* Depressed appearance */
+}
+
+.copy-button:hover {
+  background-color: #e0e0e0; /* Darker gray background on hover */
+}
+
+.address {
+  display: flex;
+}
+
+/* Media query for screens with a maximum width of 768px (typical mobile screens) */
+@media (max-width: 768px) {
+  .address {
+    flex-direction: column; /* Reverse the order of items for mobile screens */
+  }
+
+  .copy-button {
+    margin-top: 10px; /* Increase spacing between the address and the button */
+  }
+}
 .main__section--1 .main--btn-bookmark {
   width: 17.4rem;
   padding-right: 2rem;
