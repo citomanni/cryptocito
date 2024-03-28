@@ -569,7 +569,8 @@
                       </div>
                       <div class="ms-3 name">
                         <h5 class="font-bold"><%= data.user.fullname %></h5>
-                        <h6 class="text-muted mb-0"><%= data.user.tradeStatus %></h6>
+                        <h6 class="text-muted mb-0"><%= data.user.tradeStatus.charAt(0).toUpperCase() +
+                          data.user.tradeStatus.slice(1) %></h6>
                       </div>
                     </div>
                   </div>
