@@ -83,6 +83,19 @@ exports.adminLogin = catchAsync(async (req, res, next) => {
     return res.status(401).json({ error: "Invalid login credentials" });
   }
 
+  const totalUsers = await User.countDocuments();
+  const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  const newUsers = await User.countDocuments({
+    createdAt: { $gte: twentyFourHoursAgo },
+  });
+  const newTrades = await User.countDocuments({ type: "New Trade" });
+  const recoveries = await User.countDocuments({ type: "Recovery" });
+
+  const page = req.query.page * 1 || 1;
+  const limit = req.query.limit * 1 || 20;
+  const hasNext = page * limit < totalUsers;
+  const hasPrev = page > 1;
+
   const features = new APIFeatures(User.find(), req.query)
     .filter()
     .search()
@@ -90,8 +103,10 @@ exports.adminLogin = catchAsync(async (req, res, next) => {
     .limitFields()
     .paginate();
   const users = await features.query;
+  const stats = { totalUsers, newUsers, newTrades, recoveries };
+  const pagination = { page, limit, hasNext, hasPrev };
 
-  const data = { users };
+  const data = { users, stats, pagination };
 
   res.render("admin-dashboard", { data });
 });

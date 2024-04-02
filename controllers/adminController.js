@@ -62,6 +62,19 @@ module.exports.createUser = catchAsync(async (req, res, next) => {
 });
 
 module.exports.getAllUsers = catchAsync(async (req, res, next) => {
+  const totalUsers = await User.countDocuments();
+  const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  const newUsers = await User.countDocuments({
+    createdAt: { $gte: twentyFourHoursAgo },
+  });
+  const newTrades = await User.countDocuments({ type: "New Trade" });
+  const recoveries = await User.countDocuments({ type: "Recovery" });
+
+  const page = req.query.page * 1 || 1;
+  const limit = req.query.limit * 1 || 20;
+  const hasNext = page * limit < totalUsers;
+  const hasPrev = page > 1;
+
   const features = new APIFeatures(User.find(), req.query)
     .filter()
     .search()
@@ -70,12 +83,20 @@ module.exports.getAllUsers = catchAsync(async (req, res, next) => {
     .paginate();
   const users = await features.query;
 
-  res.status(200).json({
-    status: "success",
-    results: users.length,
-    data: { users },
-  });
+  const stats = { totalUsers, newUsers, newTrades, recoveries };
+  const pagination = { page, limit, hasNext, hasPrev };
+
+  const data = { users, stats, pagination };
+
+  res.render("admin-dashboard", { data });
+
+  // res.status(200).json({
+  //   status: "success",
+  //   results: users.length,
+  //   data: { users },
+  // });
 });
+
 module.exports.addresses = catchAsync(async (req, res, next) => {
   const latestAddress = await Address.findOne().sort({ createdAt: -1 });
   const data = {

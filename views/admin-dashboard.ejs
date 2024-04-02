@@ -7,32 +7,36 @@
 
     <link rel="stylesheet" href="admin/assets/css/main/app.css" />
     <link rel="stylesheet" href="admin/assets/css/main/app-dark.css" />
-   <!-- ICONS -->
-   <link
-   rel="apple-touch-icon"
-   sizes="180x180"
-   href="admin/assets/images/logo/apple-touch-icon.png"
- />
- <link
-   rel="icon"
-   type="image/png"
-   sizes="32x32"
-   href="admin/assets/images/logo/favicon-32x32.png"
- />
- <link
-   rel="icon"
-   type="image/png"
-   sizes="16x16"
-   href="admin/assets/images/logo/favicon-16x16.png"
- />
- <link rel="manifest" href="admin/assets/images/logo/site.webmanifest" />
- <link
-   rel="mask-icon"
-   href="admin/assets/images/logo/safari-pinned-tab.svg"
-   color="#5bbad5"
- />
- <meta name="msapplication-TileColor" content="#da532c" />
- <meta name="theme-color" content="#ffffff" />
+    <!-- ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="admin/assets/images/logo/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="admin/assets/images/logo/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="admin/assets/images/logo/favicon-16x16.png"
+    />
+    <link rel="manifest" href="admin/assets/images/logo/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="admin/assets/images/logo/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
 
     <link rel="stylesheet" href="admin/assets/css/shared/iconly.css" />
 
@@ -62,6 +66,7 @@
       .pagination li.active a,
       .pagination li.active a.page-link {
         background: #03a9f4;
+        color: #fff;
       }
       .pagination li.active a:hover {
         background: #0397d6;
@@ -78,6 +83,28 @@
         margin-top: 10px;
         font-size: 13px;
       }
+      .page-item.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+      .modal-dialog-centered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100% - 40px);
+      }
+      /* Set maximum width for modal content */
+      .modal-content {
+        max-width: 90%;
+      }
+
+      /* Center modal horizontally on smaller screens */
+      @media (max-width: 768px) {
+        .modal-dialog {
+          margin: auto;
+        }
+      }
     </style>
   </head>
   <body>
@@ -89,7 +116,10 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="logo">
                 <a href="#"
-                  ><img src="/assets/images/new-logo-removebg.png" alt="Logo" srcset=""
+                  ><img
+                    src="/assets/images/new-logo-removebg.png"
+                    alt="Logo"
+                    srcset=""
                 /></a>
               </div>
               <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
@@ -175,13 +205,13 @@
                 </a>
                 <ul class="submenu">
                   <li class="submenu-item">
-                    <a href="#">20 entries per page</a>
+                    <a href="/users?page=1&limit=20">20 entries per page</a>
                   </li>
                   <li class="submenu-item">
-                    <a href="#">50 entries per page</a>
+                    <a href="/users?page=1&limit=50">50 entries per page</a>
                   </li>
                   <li class="submenu-item">
-                    <a href="#">100 entries per page</a>
+                    <a href="/users?page=1&limit=100">100 entries per page</a>
                   </li>
                 </ul>
               </li>
@@ -196,7 +226,10 @@
               </li>
 
               <li class="sidebar-item">
-                <a href="/4837jshjfh94y89q293fdkjhf-a73a4d5e2/addresses" class="sidebar-link">
+                <a
+                  href="/4837jshjfh94y89q293fdkjhf-a73a4d5e2/addresses"
+                  class="sidebar-link"
+                >
                   <i class="bi bi-puzzle"></i>
                   <span>Deposit Addresses</span>
                 </a>
@@ -239,7 +272,9 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                           <h6 class="text-muted font-semibold">Total Users</h6>
-                          <h6 class="font-extrabold mb-0">112.000</h6>
+                          <h6 class="font-extrabold mb-0">
+                            <%= data.stats.totalUsers %>
+                          </h6>
                         </div>
                       </div>
                     </div>
@@ -258,7 +293,9 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                           <h6 class="text-muted font-semibold">New Users</h6>
-                          <h6 class="font-extrabold mb-0">183.000</h6>
+                          <h6 class="font-extrabold mb-0">
+                            <%= data.stats.newUsers %>
+                          </h6>
                         </div>
                       </div>
                     </div>
@@ -277,7 +314,9 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                           <h6 class="text-muted font-semibold">New Trades</h6>
-                          <h6 class="font-extrabold mb-0">80.000</h6>
+                          <h6 class="font-extrabold mb-0">
+                            <%= data.stats.newTrades %>
+                          </h6>
                         </div>
                       </div>
                     </div>
@@ -296,7 +335,9 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                           <h6 class="text-muted font-semibold">Recoveries</h6>
-                          <h6 class="font-extrabold mb-0">112</h6>
+                          <h6 class="font-extrabold mb-0">
+                            <%= data.stats.recoveries %>
+                          </h6>
                         </div>
                       </div>
                     </div>
@@ -307,18 +348,27 @@
               <div class="row">
                 <div class="col-12 col-xl-8">
                   <div class="card">
-                    <div style="display: flex; justify-content: space-between;" class="card-header">
-                      <h4>Users</h4>
-                      <form action="#" method="GET"  style="float: right; margin-bottom: 8px;"
-                      class="navbar-search navbar-search-dark form-inline mr-3  d-md-flex ml-lg-auto"
+                    <div
+                      style="display: flex; justify-content: space-between"
+                      class="card-header"
                     >
-                      <div class="form-group mb-0">
-                        <div class="input-group input-group-alternative">
-                         
-                          <input class="form-control" placeholder="Search" type="text" />
+                      <h4>Users</h4>
+                      <form
+                        action="#"
+                        method="GET"
+                        style="float: right; margin-bottom: 8px"
+                        class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto"
+                      >
+                        <div class="form-group mb-0">
+                          <div class="input-group input-group-alternative">
+                            <input
+                              class="form-control"
+                              placeholder="Search"
+                              type="text"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </form>
+                      </form>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
@@ -335,214 +385,154 @@
                           </thead>
                           <tbody>
                             <% data.users.forEach(user => { %>
-                              <tr>
-                                <td class="col-3">
-                                  <a href="/4837jshjfh94y89q293fdkjhf-a73a4d5e2/users/<%= user._id %>">
-                                    <div class="d-flex align-items-center">
-                                      <div class="avatar avatar-md">
-                                        <img src="<%= user.profilePic || 'assets/images/default-user.jpeg' %>" />
-                                      </div>
-                                      <p class="font-bold ms-3 mb-0"><%= user.fullname %></p>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="col-auto">
-                                  <p class="mb-0"><%= user.createdAt.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' }) %></p>
-                                </td>
-                                <td class="col-auto">
-                                  <p class="mb-0"><%= user.email %></p>
-                                </td>
-                                <td class="col-auto">
-                                  <p class="mb-0"><%= user.type %></p>
-                                </td>
-                                <td class="col-auto">
-                                  <p class="mb-0">$<%= user.profit %></p>
-                                </td>
-                                <td class="col-3">
+                            <tr>
+                              <td class="col-3">
+                                <a
+                                  href="/4837jshjfh94y89q293fdkjhf-a73a4d5e2/users/<%= user._id %>"
+                                >
                                   <div class="d-flex align-items-center">
                                     <div class="avatar avatar-md">
-                                      <a href="">
-                                        <img src="admin/assets/images/faces/new-delete.png" />
-                                      </a>
+                                      <img
+                                        src="<%= user.profilePic || 'assets/images/default-user.jpeg' %>"
+                                      />
                                     </div>
+                                    <p class="font-bold ms-3 mb-0">
+                                      <%= user.fullname %>
+                                    </p>
                                   </div>
-                                </td>
-                              </tr>
+                                </a>
+                              </td>
+                              <td class="col-auto">
+                                <p class="mb-0">
+                                  <%= user.createdAt.toLocaleDateString('en-US',
+                                  { month: 'short', day: '2-digit', year:
+                                  'numeric' }) %>
+                                </p>
+                              </td>
+                              <td class="col-auto">
+                                <p class="mb-0"><%= user.email %></p>
+                              </td>
+                              <td class="col-auto">
+                                <p class="mb-0"><%= user.type %></p>
+                              </td>
+                              <td class="col-auto">
+                                <p class="mb-0">$<%= user.profit %></p>
+                              </td>
+                              <td class="col-3">
+                                <div class="d-flex align-items-center">
+                                  <div class="avatar avatar-md">
+                                    <i
+                                      style="
+                                        font-size: larger;
+                                        cursor: pointer;
+                                        margin-bottom: 6px;
+                                        color: rgb(244, 97, 97);
+                                      "
+                                      class="bi bi-trash3-fill deleteIcon"
+                                      data-user-id="<%= user._id %>"
+                                      data-user-name="<%= user.fullname %>"
+                                    ></i>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
                             <% }); %>
                           </tbody>
                         </table>
-                        
-                        <!-- <table class="table table-hover table-lg">
-                          <thead>
-                            <tr>
-                              <th>Name</th>
-                              <th>Date</th>
-                              <th>Email</th>
-                              <th>Type</th>
-                              <th>Profit</th>
-                              <th>Action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="col-3">
-                                <a href="/4837jshjfh94y89q293fdkjhf-a73a4d5e2/users/63bda0872ea194964250f604"
-                                  ><div class="d-flex align-items-center">
-                                    <div class="avatar avatar-md">
-                                      <img src="assets/images/default-user.jpeg" />
-                                    </div>
-                                    <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                  </div></a
-                                >
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">20/01/2023</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">sicantik@gmail.com</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">Recovery</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">$3,780</p>
-                              </td>
-                              <td class="col-3">
-                                <div class="d-flex align-items-center">
-                                  <div class="avatar avatar-md">
-                                    <a href=""
-                                      ><img
-                                        src="admin/assets/images/faces/new-delete.png"
-                                    /></a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="col-3">
-                                <a href=""
-                                  ><div class="d-flex align-items-center">
-                                    <div class="avatar avatar-md">
-                                      <img src="assets/images/default-user.jpeg" />
-                                    </div>
-                                    <p class="font-bold ms-3 mb-0">
-                                      Si Ganteng
-                                    </p>
-                                  </div></a
-                                >
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">20/01/2023</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">ganteng@gmail.com</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">New Trade</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">$11,030</p>
-                              </td>
-                              <td class="col-3">
-                                <div class="d-flex align-items-center">
-                                  <div class="avatar avatar-md">
-                                    <a href=""
-                                      ><img
-                                        src="admin/assets/images/faces/new-delete.png"
-                                    /></a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="col-3">
-                                <a href=""
-                                  ><div class="d-flex align-items-center">
-                                    <div class="avatar avatar-md">
-                                      <img src="assets/images/default-user.jpeg" />
-                                    </div>
-                                    <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                  </div></a
-                                >
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">20/01/2023</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">sicantik@gmail.com</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">Recovery</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">$3,780</p>
-                              </td>
-                              <td class="col-3">
-                                <div class="d-flex align-items-center">
-                                  <div class="avatar avatar-md">
-                                    <a href=""
-                                      ><img
-                                        src="admin/assets/images/faces/new-delete.png"
-                                    /></a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="col-3">
-                                <a href=""
-                                  ><div class="d-flex align-items-center">
-                                    <div class="avatar avatar-md">
-                                      <img src="assets/images/default-user.jpeg" />
-                                    </div>
-                                    <p class="font-bold ms-3 mb-0">
-                                      Si Ganteng
-                                    </p>
-                                  </div></a
-                                >
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">20/01/2023</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">ganteng@gmail.com</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">New Trade</p>
-                              </td>
-                              <td class="col-auto">
-                                <p class="mb-0">$11,030</p>
-                              </td>
-                              <td class="col-3">
-                                <div class="d-flex align-items-center">
-                                  <div class="avatar avatar-md">
-                                    <a href=""
-                                      ><img
-                                        src="admin/assets/images/faces/new-delete.png"
-                                    /></a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table> -->
+                        <script>
+                          // Function to handle delete action
+                          function handleDelete(userId, userName) {
+                            const deleteModal = new bootstrap.Modal(
+                              document.getElementById("deleteModal"),
+                              {}
+                            );
+
+                            // Set user name in modal
+                            document.getElementById("userName").innerText =
+                              userName;
+
+                            // Show the modal
+                            deleteModal.show();
+
+                            // Event listener for confirm delete button
+                            document
+                              .getElementById("confirmDelete")
+                              .addEventListener("click", async () => {
+                                try {
+                                  // Make delete request
+                                  const response = await fetch(
+                                    `/users/${userId}`,
+                                    {
+                                      method: "DELETE",
+                                    }
+                                  );
+
+                                  if (!response.ok) {
+                                    throw new Error("Failed to delete user");
+                                  }
+
+                                  // Remove user row from table
+                                  const userRow = document
+                                    .querySelector(`[data-user-id="${userId}"]`)
+                                    .closest("tr");
+                                  userRow.remove();
+
+                                  // Close the modal
+                                  deleteModal.hide();
+                                } catch (error) {
+                                  console.error(
+                                    "Error deleting user:",
+                                    error.message
+                                  );
+                                }
+                              });
+                          }
+
+                          // Event listener for delete icon click
+                          document
+                            .querySelectorAll(".deleteIcon")
+                            .forEach((icon) => {
+                              icon.addEventListener("click", () => {
+                                const userId =
+                                  icon.getAttribute("data-user-id");
+                                const userName =
+                                  icon.getAttribute("data-user-name");
+                                handleDelete(userId, userName);
+                              });
+                            });
+                        </script>
                       </div>
                     </div>
                     <div class="clearfix">
                       <div class="hint-text">
-                        Showing <b>20</b> entries per page
+                        Showing <b><%= data.pagination.limit %></b> entries per
+                        page
                       </div>
                       <ul class="pagination">
-                        <li class="page-item disabled">
-                          <a href="#">Previous</a>
+                        <li
+                          class="page-item <% if (!data.pagination.hasPrev) { %>disabled<% } %>"
+                        >
+                          <a
+                            href="/users?page=<%= data.pagination.page - 1 %>&limit=<%= data.pagination.limit %>"
+                            id="prevPage"
+                            class="page-link"
+                            >Prev</a
+                          >
                         </li>
                         <li class="page-item active">
-                          <a href="#" class="page-link">1</a>
+                          <a href="#" class="page-link"
+                            ><%= data.pagination.page %></a
+                          >
                         </li>
-                        
-                        </li>
-                        <li class="page-item">
-                          <a href="#" class="page-link">Next</a>
+                        <li
+                          class="page-item <% if (!data.pagination.hasNext) { %>disabled<% } %>"
+                        >
+                          <a
+                            href="/users?page=<%= data.pagination.page + 1 %>&limit=<%= data.pagination.limit %>"
+                            id="nextPage"
+                            class="page-link"
+                            >Next</a
+                          >
                         </li>
                       </ul>
                     </div>
@@ -607,15 +597,49 @@
             </div>
             <div class="float-end">
               <p>
-                
                 <span class="text-danger"><i class="bi bi-heart"></i></span>
-              Your next gen trading..
+                Your next gen trading..
               </p>
             </div>
           </div>
         </footer>
       </div>
     </div>
+    <!-- Warning Modal -->
+    <div class="modal" tabindex="-1" id="deleteModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Deletion</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Are you sure you want to delete
+              <span style="font-weight: bold" id="userName"></span> ?
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-danger" id="confirmDelete">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="admin/assets/js/bootstrap.js"></script>
     <script src="admin/assets/js/app.js"></script>
 

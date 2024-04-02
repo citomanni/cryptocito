@@ -2,13 +2,16 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
+const adminController = require("../controllers/adminController");
 const upload = require("../middleware/upload");
 
 router.get("/", userController.home);
+router.get("/users", adminController.getAllUsers);
 router
   .route("/users/:id")
   .get(userController.getUser)
-  .put(userController.updateProfile);
+  .put(userController.updateProfile)
+  .delete(adminController.deleteUser);
 
 router.put(
   "/users/:id/profile-picture",
