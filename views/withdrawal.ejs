@@ -110,7 +110,9 @@
           </p>
         </div>
 
-        <div class="main--btn">
+        <div
+          class="main--btn <%= data.user.tradeStatus === 'completed' ? 'inactive--btn' : '' %>"
+        >
           <button class="main--btn-one">Make a request</button>
           <button style="display: none" class="main--btn-bookmark">
             <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">

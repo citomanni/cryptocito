@@ -1003,25 +1003,6 @@ main {
   vertical-align: top;
 }
 
-/* .open--section {
-  margin-top: 20px;
-}
-
-.open--section input[type="text"],
-.open--section button {
-  margin-bottom: 10px;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.open--section hr {
-  margin-top: 10px;
-  margin-bottom: 20px;
-} */
-
 .radio-btn-bank {
   font-size: 1.8rem;
   font-weight: 600;
@@ -1071,4 +1052,14 @@ main {
   .bank-input-container {
     width: 100%;
   }
+}
+
+.inactive--btn .main--btn-one {
+  background-color: #7a7a7a;
+}
+.inactive--btn .main--btn-one:hover {
+  pointer-events: none;
+  cursor: auto;
+  background-color: #7a7a7a;
+  transform: translateY(0rem);
 }
