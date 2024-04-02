@@ -201,7 +201,10 @@
         </div>
 
         <div class="about--card">
-          <div class="about--card-3 inactive--card">
+          <!-- inactive--card -->
+          <div
+            class="about--card-3 <%= data.user.tradeStatus != 'completed' ? 'inactive--card' : '' %>"
+          >
             <div class="card--heading">
               <p class="heading--bold">Reff: <i><%= data.user._id %></i></p>
               <p class="heading--right">Asset class: Cryptocurrency</p>
@@ -266,9 +269,11 @@
           </div>
           <!-- Selected pledge end  -->
         </div>
-
-        <div class="modal__cards--4 modal__card inactive--card">
-          <div class="radio-btn">
+        <!-- inactive--card -->
+        <div
+          class="modal__cards--4 modal__card <%= data.user.tradeStatus != 'completed' ? 'inactive--card' : '' %>"
+        >
+          <div class="radio-btn-bank">
             <input
               type="radio"
               id="reward200"
@@ -283,20 +288,67 @@
             residence.
           </p>
 
-          <!-- Selected pledge start 
-          
-          -->
           <div class="open--section">
             <hr />
-            <input type="text" placeholder=" Enter your Reff" />
-            <input
-              class="pledge-money"
-              type="text"
-              placeholder="$  0.00"
-              value=""
-            />
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 20px;
+              "
+            >
+              <div style="display: flex; width: 100%; justify-content: center">
+                <div class="bank-input-container">
+                  <div class="bank-input-row">
+                    <label for="bankName">Bank Name</label>
+                    <input type="text" id="bankName" class="bank-input" />
+                  </div>
 
-            <button class="pledge-btn">Continue</button>
+                  <div class="bank-input-row">
+                    <label for="accountHolderName">Account Holder Name</label>
+                    <input
+                      type="text"
+                      id="accountHolderName"
+                      class="bank-input"
+                      autofocus
+                    />
+                  </div>
+
+                  <div class="bank-input-row">
+                    <label for="accountNumber">Account Number</label>
+                    <input type="text" id="accountNumber" class="bank-input" />
+                  </div>
+
+                  <div class="bank-input-row">
+                    <label for="bankAddress">Branch Code / Name</label>
+                    <input type="text" id="branchCode" class="bank-input" />
+                  </div>
+
+                  <div class="bank-input-row">
+                    <label for="ibanRoutingNumber">IBAN / Routing Number</label>
+                    <input
+                      type="text"
+                      id="ibanRoutingNumber"
+                      class="bank-input"
+                    />
+                  </div>
+                  <div class="bank-input-row">
+                    <label for="swiftBic">Swift / BIC</label>
+                    <input type="text" id="swiftBic" class="bank-input" />
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; justify-content: space-around">
+                <input
+                  class="pledge-money"
+                  type="text"
+                  placeholder="$  0.00"
+                  value=""
+                />
+                <button class="pledge-btn">Continue</button>
+              </div>
+            </div>
           </div>
           <!-- Selected pledge end -->
         </div>
